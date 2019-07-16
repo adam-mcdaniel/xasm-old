@@ -1,0 +1,67 @@
+?start: expr*
+
+// EXPRESSIONS
+?expr: value | assign
+
+?value: dot_name -> load_dot
+     | call
+     | name -> load
+     | number
+     | string
+     | bool
+     | math
+     | group
+     | fn
+
+group: "(" expr+ ")"
+
+math: "*" -> mul
+    | "/" -> div
+    | "+" -> add
+    | "-" -> sub
+    | "%" -> mod
+    | ">" -> great
+    | "<" -> less
+    | "==" -> eq
+    | "!=" -> neq
+
+assign: name "="
+      | dot_name "=" -> attribute_assign
+
+call: dot_name "!" -> method_call
+    | value "!"
+
+parameters: "(" (name ",")* [name] ")" 
+fn: parameters "{" start "}"
+// END EXPRESSIONS
+
+
+
+
+// BASIC TOKENS
+name: (IDENTIFIER "::")* IDENTIFIER
+dot_name: (IDENTIFIER ".")+ IDENTIFIER
+        | value "." (IDENTIFIER ".")* IDENTIFIER -> dot_value
+
+number: NUMBER | FLOAT_NUMBER
+
+string: STRING
+
+bool: "true" -> true
+    | "false" -> false
+// END BASIC TOKENS
+
+
+
+
+// TERMINALS
+NUMBER: /0|[1-9]\d*/i
+FLOAT_NUMBER: /((\d+\.\d*|\.\d+)(e[-+]?\d+)?|\d+(e[-+]?\d+))/i
+STRING : /[ubf]?r?("(?!"").*?(?<!\\)(\\\\)*?"|'(?!'').*?(?<!\\)(\\\\)*?')/i
+IDENTIFIER: /[a-zA-Z_]\w*/
+COMMENT: /\/\/[^\n]*/
+// END TERMINALS
+
+%ignore /[\t\n\r \f]+/
+%ignore /\\[\t \f]*\r?\n/
+%ignore COMMENT
