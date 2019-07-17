@@ -1,7 +1,7 @@
 ?start: expr*
 
 // EXPRESSIONS
-?expr: value | assign
+?expr: value | assign// | while_loop
 
 ?value: dot_name -> load_dot
      | call
@@ -27,6 +27,8 @@ math: "*" -> mul
 
 assign: name "="
       | dot_name "=" -> attribute_assign
+
+// while_loop: "&"
 
 call: dot_name "!" -> method_call
     | value "!"
