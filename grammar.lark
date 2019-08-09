@@ -1,9 +1,10 @@
 ?start: expr*
 
 // EXPRESSIONS
-?expr: value | assign// | while_loop
+?expr: value | assign | while_loop
 
 ?value: dot_name -> load_dot
+     | index_name -> load_index
      | call
      | name -> load
      | number
@@ -27,14 +28,15 @@ math: "*" -> mul
 
 assign: name "="
       | dot_name "=" -> attribute_assign
+      | index_name "=" -> index_assign
 
-// while_loop: "&"
+while_loop: "while" value "{" start "}"
 
 call: dot_name "!" -> method_call
     | value "!"
 
 parameters: "(" (name ",")* [name] ")" 
-fn: parameters "{" start "}"
+fn: "fn" parameters "{" start "}"
 // END EXPRESSIONS
 
 
@@ -44,6 +46,8 @@ fn: parameters "{" start "}"
 name: (IDENTIFIER "::")* IDENTIFIER
 dot_name: (IDENTIFIER ".")+ IDENTIFIER
         | value "." (IDENTIFIER ".")* IDENTIFIER -> dot_value
+index_name: value ("[" value "]")+
+        
 
 number: NUMBER | FLOAT_NUMBER
 
