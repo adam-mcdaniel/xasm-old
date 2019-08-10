@@ -44,6 +44,9 @@ int main() {{
 	xasm.push(Object::Fn(Fn(table, xasm)));
 	xasm.push(Object::String("table"));
 	xasm.store();
+	xasm.push(Object::Fn(Fn(table, xasm)));
+	xasm.push(Object::String("new"));
+	xasm.store();
 	xasm.push(Object::Fn(Fn(print, xasm)));
 	xasm.push(Object::String("print"));
 	xasm.store();
