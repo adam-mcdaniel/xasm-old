@@ -135,9 +135,70 @@
 // a println!
 
 
-new! table =
+// new! table =
 
-"whoa" index =
-5 table[index] =
+// "whoa" index =
+// 5 table[index] =
 
-table println!
+// table println!
+
+// 100000 n =
+// while (n) {
+//     n
+//     fn (value) {
+//         "WRAPPED PRINT: " print! value println!
+//     } !
+//     1 n - n =
+// }
+
+
+
+fn(n) {
+    fn(m) {
+        n m *
+    }
+} mul =
+
+
+3 mul! triple =
+
+5 triple!
+
+
+100 x =
+100 y =
+
+while (y) {
+    while (x) {
+        "x: " print!
+        x print!
+        ", y: " print!
+        y println!
+
+        1 x - x =
+    }
+    1 y - y =
+    100 x =
+}
+
+
+
+
+
+list! l = 
+
+
+1 l push!
+2 l push!
+7 l push!
+"exam" l push!
+
+l println!
+
+
+
+4 n =
+while (n) {
+    1 n - n =
+    l[n] println!
+}

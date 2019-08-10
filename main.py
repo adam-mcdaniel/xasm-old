@@ -12,4 +12,8 @@ lexer = Lark.open(
 ).parse(text)
 
 # print(Parser().transform(lexer).pretty())
-print(Parser().transform(lexer))
+print(
+    ' '.join(
+        Parser().transform(lexer).split()
+    ).replace(';;', ';').replace(';;', ';') #.replace(';', ';\n')
+)

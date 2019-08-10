@@ -47,10 +47,6 @@ class Parser(Transformer):
 
     def method_call(self, values):
         return values[0][0] + dot_name(values[0][1:-1]) + ' ' + x_method_call(values[0][-1]) + ';'
-        # if len(names[0]) > 2:
-        #     return dot_name(names[0][:-1]) + ' ' + x_method_call(names[0][-1]) + ';'
-        # else:
-        #     return load(names[0][0]) + ' ' + x_method_call(names[0][1]) + ';'
 
     def call(self, values):
         function = values[0]
@@ -70,10 +66,6 @@ class Parser(Transformer):
 
     def dot_value(self, names):
         return names
-        # result = names[0]
-        # for name in names[1:]:
-        #     result += push(x_str(quote(name))) + f' {MACHINE}.index();'
-        # return result
 
     def parameters(self, names):
         result = ""
