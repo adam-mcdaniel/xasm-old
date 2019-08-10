@@ -1,12 +1,13 @@
 
 
 
-{
+
+fn() {
     // new function returns an empty table
     // name table `self`
     new ! self =
 
-    (self, value, sign) {
+    fn(self, value, sign) {
         value self.value =
         sign self.sign =
 
@@ -14,9 +15,14 @@
     } self.constructor =
 
 
-    (self, value) {
+    fn(self, value) {
         value self.value =
     } self.set_value =
+
+    
+    fn(self, value) {
+        1 self.value + self.value =
+    } self.increment =
 
     self
 } Number =
@@ -25,8 +31,9 @@
 
 
 // cons function will call the `constructor` attribute of the value returned when calling `Number`
-false 5 Number cons ! num =
+false 5 Number!.constructor! num =
 
-num.value print !
-
-
+num.value println !
+num.increment!
+num.increment!
+num.value println !

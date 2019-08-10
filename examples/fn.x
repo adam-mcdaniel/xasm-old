@@ -1,14 +1,14 @@
 
 
-(a, b) {
+fn(a, b) {
     a b *
 } mul =
 
 
 
 
-{
-    5 print !
+fn() {
+    5 println !
 } test =
 
 
@@ -16,5 +16,5 @@ test !
 
 
 
-5 4 mul ! print !
+5 4 mul ! println !
 

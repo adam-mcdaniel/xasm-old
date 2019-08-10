@@ -14,5 +14,5 @@ ExternalProject_Add(dragon
 
 add_executable(xasm src/main.cpp)
 add_dependencies(xasm dragon)
-target_include_directories(xasm PUBLIC ${CMAKE_BINARY_DIR})
+target_include_directories(xasm PRIVATE ${EXTERNAL_INSTALL_LOCATION}/include)
 target_link_libraries(xasm PRIVATE ${EXTERNAL_INSTALL_LOCATION}/lib/libdragon.a)
